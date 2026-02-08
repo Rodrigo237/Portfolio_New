@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NeonSpotlight from "./effects/Ilumination";
+import Link from "next/link";
 
 export default function AboutMe() {
   return (
@@ -10,7 +11,7 @@ export default function AboutMe() {
       id="about"
       className="relative min-h-screen px-6 py-24 bg-black text-white overflow-hidden"
     >
-      <NeonSpotlight />
+     <NeonSpotlight />
 
       {/* Background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,255,0.15),transparent_70%)] pointer-events-none" />
@@ -250,17 +251,22 @@ export default function AboutMe() {
 
 
       {/* CTA */}
-      <div className="text-center mt-16">
-        <motion.a
-          href="/projects"
+     <div className="text-center mt-16 relative z-20">
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="inline-block px-8 py-3 rounded-lg bg-cyan-500 text-black font-bold shadow-[0_0_20px_#00ffff] hover:bg-cyan-400 transition"
         >
-          View My Projects
-        </motion.a>
+          <Link
+            href="/projects"
+            className="inline-block px-8 py-3 rounded-lg bg-cyan-500 text-black font-bold shadow-[0_0_20px_#00ffff] hover:bg-cyan-400 transition"
+          >
+            View My Projects
+          </Link>
+        </motion.div>
       </div>
+
+
     </section>
   );
 }

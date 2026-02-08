@@ -65,9 +65,34 @@ export default function Contact() {
         </motion.p>
 
         {/* Avatar */}
-        <div className="my-16">
-          <HologramAvatar/>
+        <div className="my-16 flex justify-center">
+          <div className="
+            relative 
+            w-full max-w-sm 
+            aspect-square 
+            rounded-2xl 
+            overflow-hidden 
+            border border-cyan-400/40 
+            bg-black/40 
+            backdrop-blur-md 
+            shadow-[0_0_25px_#00ffff50] 
+            hover:shadow-[0_0_45px_#00ffff90] 
+            transition-all
+            hologram-border
+          ">
+            
+            {/* Scanlines */}
+            <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay scanlines"></div>
+
+            {/* Noise */}
+            <div className="absolute inset-0 pointer-events-none noise"></div>
+
+            {/* Avatar */}
+            <HologramAvatar />
+          </div>
         </div>
+
+
 
         {/* Contact Form */}
         <ParallaxContainer>
@@ -100,6 +125,19 @@ export default function Contact() {
             </button>
           </motion.form>
         </ParallaxContainer>
+
+        <motion.p
+          variants={scrollReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-gray-400 text-sm mt-12 italic"
+        >
+          I love connecting with people who enjoy building futuristic, meaningful digital experiences.  
+          If you're in Vancouver and want to grab a coffee and talk tech, design, or cyberpunk aesthetics —  
+          I’m always open to it.
+        </motion.p>
+
 
       </div>
     </section>

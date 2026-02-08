@@ -31,7 +31,7 @@ export default function Hero() {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="text-xl md:text-2xl text-gray-300 mt-4 max-w-2xl"
       >
-        Full‑Stack Developer • Cyberpunk Enthusiast • Interactive Experiences
+        Full‑Stack Developer • Mobile Developer • Marketing Assistant
       </motion.p>
     </section>
   );
