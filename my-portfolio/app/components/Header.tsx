@@ -10,7 +10,7 @@ export default function Header() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full bg-white/70 backdrop-blur-md shadow-sm z-50"
+      className="fixed top-0 left-0 w-full bg-nav-bar2 backdrop-blur-md shadow-sm z-50 text-white"
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
         <h1 className="text-xl font-bold">Rodrigo Moreno</h1>
