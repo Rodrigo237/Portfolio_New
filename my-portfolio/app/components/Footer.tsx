@@ -73,7 +73,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="/Resume_Rodrigo_Moreno.pdf"
+                  href="/Rodrigo Moreno - Resume.pdf"
                   download
                   className="hover:text-cyan-400 transition"
                 >

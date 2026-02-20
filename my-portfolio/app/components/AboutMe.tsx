@@ -72,7 +72,6 @@ export default function AboutMe() {
             About Me
           </h1>
 
-          {/* Subheading */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -82,7 +81,6 @@ export default function AboutMe() {
             • Developer 
           </motion.p>
 
-          {/* Story + Philosophy */}
           <p className="text-gray-300 leading-relaxed mb-6">
             I'm a software developer originally from Mexico City, now based in Vancouver, Canada. 
             My journey started with Android development, where I discovered how powerful it feels 
@@ -105,7 +103,6 @@ export default function AboutMe() {
             my creative direction.
           </p>
 
-          {/* Quick Info Panel */}
           <div className="grid grid-cols-2 gap-4 text-gray-200 mb-10">
             <div className="p-4 rounded-lg bg-black/40 border border-cyan-400/40 shadow-[0_0_15px_#00ffff30]">
               <p className="text-cyan-300 font-semibold">📍 Location</p>
@@ -125,7 +122,6 @@ export default function AboutMe() {
             </div>
           </div>
 
-          {/* Fun Facts */}
           <div className="mt-6">
             <h3 className="text-2xl font-bold text-cyan-300 mb-4">Fun Facts</h3>
             <ul className="space-y-2 text-gray-300">
@@ -138,12 +134,10 @@ export default function AboutMe() {
         </motion.div>
       </div>
 
-      {/* Divider */}
       <div className="relative max-w-4xl mx-auto mt-20 mb-10">
         <div className="h-[2px] w-full bg-cyan-400/40 shadow-[0_0_10px_#00ffff] animate-pulse" />
       </div>
 
-      {/* Education Timeline */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -175,7 +169,6 @@ export default function AboutMe() {
         </div>
       </motion.div>
 
-      {/* ⭐ Collage Futurista con Scroll Reveal + Hover Holográfico + Parallax */}
 <motion.div
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
@@ -183,7 +176,6 @@ export default function AboutMe() {
   viewport={{ once: true }}
   className="relative max-w-5xl mx-auto mt-20"
 >
-  {/* Parallax container */}
 
   <h2 className="text-3xl font-bold text-cyan-300 mb-8">Interests</h2>
   <motion.div

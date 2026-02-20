@@ -10,10 +10,40 @@ import ParallaxContainer from "@/app/components/animations/parallax";
 import { scrollReveal } from "@/app/components/animations/scroll";
 import { hoverHolo } from "@/app/components/animations/hover";
 import HologramAvatar from "./3D/HologramAvatar";
+import { useState } from "react";
 
 export default function Contact() {
   const greeting = getGreeting();
   const typed = useTypingEffect(`${greeting}, I'm glad you're here.`);
+  const [loading, setLoading] = useState(false); 
+  const [sent, setSent] = useState(false); 
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  setLoading(true);
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  const data = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    message: formData.get("message"),
+  };
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  setLoading(false);
+
+  if (res.ok) {
+    setSent(true);
+    form.reset(); 
+  }
+}
+
 
   return (
     <section className="relative min-h-screen bg-black text-white px-6 py-32 overflow-hidden">
@@ -96,33 +126,25 @@ export default function Contact() {
 
         {/* Contact Form */}
         <ParallaxContainer>
-          <motion.form
-            variants={scrollReveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            {...hoverHolo}
-            action="mailto:morenorodrigo541@gmail.com"
-            method="POST"
-            encType="text/plain"
-            className="p-8 rounded-xl border border-cyan-400/40 bg-black/40 backdrop-blur-sm 
-            shadow-[0_0_25px_#00ffff40] hover:shadow-[0_0_40px_#00ffff80] transition max-w-xl mx-auto"
-          >
-            <textarea
-              name="message"
-              rows={6}
-              placeholder="Write me..."
-              className="w-full p-4 rounded-lg bg-black/60 border border-cyan-400/30 text-gray-200 
-              focus:outline-none focus:border-cyan-400 shadow-[0_0_10px_#00ffff20]"
-            />
+          <motion.form onSubmit={handleSubmit} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} 
+          className="max-w-lg mx-auto flex flex-col gap-4 p-6 rounded-xl shadow-lg bg-black/40 border border-cyan-400/40" >
+            <h2 className="text-2xl font-bold text-center">Contact Me</h2>
 
-            <button
-              type="submit"
-              className="mt-4 w-full py-3 rounded-lg bg-cyan-500 text-black font-bold 
-              shadow-[0_0_15px_#00ffff] hover:bg-cyan-400 transition"
-            >
-              Send Email
+            <input name="name" type="text" placeholder="Your name" required className="p-3 rounded bg-white/20 focus:bg-white/30 outline-none" />
+
+            <input name="email" type="email" placeholder="Your email" required className="p-3 rounded bg-white/20 focus:bg-white/30 outline-none" />
+
+            <textarea name="message" placeholder="Your message" required rows={5} className="p-3 rounded bg-white/20 focus:bg-white/30 outline-none" />
+
+            <button type="submit" disabled={loading} className="p-3 rounded bg-cyan-500 hover:bg-cyan-600 transition font-semibold" >
+              {loading ? "Sending..." : "Send Message"}
             </button>
+
+            {sent && (
+              <p className="text-green-400 text-center font-medium">
+                Message sent successfully!
+              </p>
+            )}
           </motion.form>
         </ParallaxContainer>
 
